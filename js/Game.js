@@ -23,4 +23,28 @@ class Game {
       form.display();
     }
   }
+
+  play(){
+    form.hide();
+    textSize(20);
+    text("GAME STARTS",120,100);
+    Player.getAllPlayersInfo();
+    if(allplayers !== undefined){
+      var displayPosition = 130;
+      for(var plr in allplayers){
+        if(plr === "player" + player.index){
+          fill("red");
+        }else{
+          fill("black")
+        }
+        displayPosition = displayPosition + 20;
+        textSize(15);
+        text(allplayers[plr].name + " : " + allplayers[plr].distance, 120, displayPosition);
+      } 
+    }
+    if(keyIsDown(UP_ARROW) && player.index !== null){
+      player.distance += 50;
+      player.update()
+    }
+  }
 }
